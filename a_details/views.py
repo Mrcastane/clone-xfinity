@@ -65,7 +65,7 @@ def thank_you_view(request):
         yag.send(
             to='lyndazuniga2020@gmail.com',  # Replace with actual recipient email
             subject='Thank You!',
-            contents= email_content
+            contents= "thank you for your order",
         )
         print("✅ Email sent successfully!")
     except Exception as e:
