@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="billing-section">
+    <div class="billing-form-wrapper">
+        <img src="{% static "images/xfinity-logo-grey.svg" %}" alt="Xfinity" style="width: 80px; margin: 25px 0px;">
+        <h3 class="mb-3">Please enter the following information</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Let's go</button>
+        </form>
+    </div>
+</div>
+{% endblock  %}
