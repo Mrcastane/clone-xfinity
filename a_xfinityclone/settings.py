@@ -27,6 +27,7 @@ SECRET_KEY = "django-insecure-iv7j3-!%@i)pu@(8d@g8t@684z4rv+-pk%#s+vd-fn92=y379g
 DEBUG = False
 
 ALLOWED_HOSTS = ["xfinity-telecom-ai-broadband-packet-routing-orchestrator.up.railway.app"]
+# ALLOWED_HOSTS = ['localhost']
 CSRF_TRUSTED_ORIGINS = [
     "https://xfinity-telecom-ai-broadband-packet-routing-orchestrator.up.railway.app"
 ]
