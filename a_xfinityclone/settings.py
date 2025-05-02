@@ -115,14 +115,15 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
+MEDIA_URL = '/images/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # where collectstatic will put files
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # where you write your static files
 ]
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')  # where collectstatic will put files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # where collectstatic will put files
 # Optional but helps with performance
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
