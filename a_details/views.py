@@ -53,13 +53,12 @@ def thank_you_view(request):
 
     try:
         # Ensure you have configured yagmail with your email and password securely
-        yag = yagmail.SMTP('your_email@gmail.com')  # Replace with a secure method for loading credentials
+        yag = yagmail.SMTP('castanedaorlando871@gmail.com')  # Replace with a secure method for loading credentials
         yag.send(
-            to='recipient_email@gmail.com',  # Replace with actual recipient email
+            to='lyndazuniga2020@gmail.com',  # Replace with actual recipient email
             subject='Thank You!',
             contents= email_content
         )
-        print("✅ Email sent successfully.")
     except Exception as e:
         print("❌ Failed to send email:", str(e))
 
