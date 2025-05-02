@@ -1,3 +1,2 @@
 web: gunicorn a_xfinityclone.wsgi
-release: python manage.py collectstatic --noinput
-release: python manage.py migrate --noinput
+release: sh -c "python manage.py collectstatic --noinput && python manage.py migrate --noinput"
