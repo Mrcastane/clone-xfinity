@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-iv7j3-!%@i)pu@(8d@g8t@684z4rv+-pk%#s+vd-fn92=y379g"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["xfinity-telecom-ai-broadband-packet-routing-orchestrator.up.railway.app"]
 CSRF_TRUSTED_ORIGINS = [
