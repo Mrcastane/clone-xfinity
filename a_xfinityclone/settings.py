@@ -115,18 +115,18 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static/'
-MEDIA_URL = '/images/'
-
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # where you write your static files
+    os.path.join(BASE_DIR, 'static'),
 ]
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')  # where collectstatic will put files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # where collectstatic will put files
-# Optional but helps with performance
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
